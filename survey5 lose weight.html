@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack - Register</title>
+    <link rel="stylesheet" href="./assets/CSS/survey5.css">
+</head>
+<body>
+    <header1>
+        <div class="container">
+            <a href="index.html" class="logo">FitTrack</a>
+            <div class="auth-links">
+                <a href="login.html">Sign in</a> | <a href="Registration Page.html">Register</a>
+            </div>
+        </div>
+    </header1>
+    <header>
+        <div class="container">
+            <div class="form-container">
+                <nav>
+                <ul class="nav-links">
+                    <li><a href="#">MAKANAN</a></li>
+                    <li><a href="#">LATIHAN</a></li>
+                    <li><a href="#">APLIKASI</a></li>
+                    <li><a href="#">KOMUNITAS</a></li>
+                    <li><a href="#">BLOG</a></li>
+                    <li><a href="#">PREMIUM</a></li>
+                </ul>
+            </nav>
+         </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-box">
+            <h2>What have been your problem to losing weight?</h2>
+            <div class="option" id="option1">Lack of time</div>
+            <div class="option" id="option2">Food craving</div>
+            <div class="option" id="option3">Lack of process</div>
+            <div class="option" id="option4">Did not enjoy the food</div>
+            <div class="buttons">
+                <button type="button" class="button" onclick="prevStep()">Back</button>
+            <button type="button" class="button" onclick="nextStep()">Next</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 FitTrack, Inc.</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setupOptions();
+        });
+
+        function showStep(step) {
+        }
+
+        function nextStep() {
+            window.location.href = "survey6 tb bb.html";
+        }
+
+        function prevStep() {
+            window.location.href = "survey4 how often.html";
+        }
+
+        function setupOptions() {
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                option.addEventListener('click', () => {
+                    const stepOptions = option.parentNode.querySelectorAll('.option');
+                    stepOptions.forEach(opt => opt.classList.remove('selected'));
+                    option.classList.add('selected');
+                });
+            });
+        }
+
+        function submitForm() {
+            const form = document.getElementById('registration-form');
+            form.submit();
+        }
+    </script>
+</body>
+</html>

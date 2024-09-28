@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack - Register</title>
+    <link rel="stylesheet" href="./assets/CSS/registration.css">
+</head>
+<body>
+    <header1>
+        <div class="container">
+            <a href="index.html" class="logo">FitTrack</a>
+            <div class="auth-links">
+                <a href="login.html">Sign in</a> | <a href="#">Register</a>
+            </div>
+        </div>
+    </header1>
+    <header>
+        <div class="container">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">MAKANAN</a></li>
+                    <li><a href="#">LATIHAN</a></li>
+                    <li><a href="#">APLIKASI</a></li>
+                    <li><a href="#">KOMUNITAS</a></li>
+                    <li><a href="#">BLOG</a></li>
+                    <li><a href="index.html">PREMIUM</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="illustration">
+                <img src="assets/img/regis.jpg" alt="Illustration">
+            </div>
+            <div class="form-container">
+                <form name="registrationForm"> 
+                    <h2>Register</h2>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <br>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <br>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    <br>
+                    <label for="profilePicture">Profile Picture:</label>
+                    <input type="file" id="profilePicture" name="profilePicture" accept="image/*" required>
+                    <br>
+                    <div id="registerMessage"></div>
+                    <button type="submit">Next</button>
+                </form>
+                <p id="registerMessage" class="error-message"></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 FitTrack, Inc.</p>
+        </div>
+    </footer>
+    <script src="./assets/js/user.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack</title>
+    <link rel="stylesheet" href="./assets/CSS/calories.css">
+</head>
+<body>
+    <header1>
+        <div class="container">
+            <a href="my home.html" class="logo">FitTrack</a>
+            <div class="auth-links">
+                <a href="login.html">Sign in</a> | <a href="Registration Page.html">Register</a>
+            </div>
+        </div>
+    </header1>
+    <header>
+        <div class="container">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">MAKANAN</a></li>
+                    <li><a href="#">LATIHAN</a></li>
+                    <li><a href="#">APLIKASI</a></li>
+                    <li><a href="#">KOMUNITAS</a></li>
+                    <li><a href="#">BLOG</a></li>
+                    <li><a href="index.html">PREMIUM</a></li>
+                </ul>
+            </nav>
+            <div class="auth-links">
+                <a href="#">Stivo</a>
+            </div>
+        </div>
+    </header>
+    <main class="container main-content">
+        <div class="left-section">
+            <div class="search-section">
+                <h2>Nutrition facts for food</h2>
+                <input type="text" class="search-box" placeholder="Search for food">
+            </div>
+            <h1>Food Diary</h1>
+            <div id="message" class="message"></div>
+            <h2>Add Calorie Intake</h2>
+            <form id="addCalorieIntakeForm">
+                <label for="foodName">Food Name:</label>
+                <input type="text" id="foodName" name="foodName" required><br>
+                <label for="servingSize">Serving Size:</label>
+                <input type="number" id="servingSize" name="servingSize" required><br>
+                <label for="calories">Calories per Serving:</label>
+                <input type="number" id="calories" name="calories" required><br>
+                <button type="submit">Add Entry</button>
+            </form>
+
+            <h2>Get Calorie Intake by Date</h2>
+            <form id="getCalorieIntakeByDateForm">
+                <label for="dateQuery">Date:</label>
+                <input type="date" id="dateQuery" name="dateQuery" required><br>
+                <button type="submit">Get</button>
+            </form>
+
+            <h2>Get Calorie Intake by Limit</h2>
+            <form id="getCalorieIntakeByLimitForm">
+                <label for="limit">Limit:</label>
+                <input type="number" id="limit" name="limit" required><br>
+                <button type="submit">Get</button>
+            </form>
+
+            <h2>Delete Calorie Intake</h2>
+            <form id="deleteCalorieIntakeForm">
+                <label for="deleteItem">Item:</label>
+                <input type="text" id="deleteItem" name="item" required><br>
+                <label for="deleteDate">Date:</label>
+                <input type="date" id="deleteDate" name="date" required><br>
+                <button type="submit">Delete</button>
+            </form>
+
+            <h2>View Food Diary</h2>
+            <button id="getFoodDiaryBtn">View Entries</button>
+            <ul id="foodDiaryList"></ul>
+
+            <h2>Total Calorie Intake</h2>
+            <button id="calculateTotalCaloriesBtn">Calculate Total Calories</button>
+            <div id="totalCalories"></div>
+        </div>
+        <div class="fun-facts">
+            <h2>Fun Facts !!!</h2>
+            <p>Did you know that regular exercise can boost your memory and cognitive skills? Studies have shown that working out, especially aerobic exercises like running or cycling, can enhance brain function and help prevent cognitive decline as you age!</p>
+        </div>
+    </main>
+    <script>
+        const messageEl = document.getElementById('message');
+        const foodDiaryListEl = document.getElementById('foodDiaryList');
+        const totalCaloriesEl = document.getElementById('totalCalories');
+
+        function displayMessage(message) {
+            messageEl.innerText = message;
+        }
+
+        const foodDiary = []; 
+        document.getElementById('addCalorieIntakeForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const newEntry = {
+                foodName: formData.get('foodName'),
+                servingSize: formData.get('servingSize'),
+                calories: formData.get('calories'),
+                date: new Date().toISOString().split('T')[0], 
+            };
+
+            foodDiary.push(newEntry);
+            displayMessage('Food entry added successfully!');
+            document.getElementById('addCalorieIntakeForm').reset();
+            renderFoodDiaryList();
+        });
+
+        document.getElementById('getCalorieIntakeByDateForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const dateQuery = formData.get('dateQuery');
+
+            const filteredEntries = foodDiary.filter(entry => entry.date === dateQuery);
+
+            if (filteredEntries.length === 0) {
+                displayMessage('No entries found for the selected date.');
+                return;
+            }
+
+            displayCalorieIntake(filteredEntries);
+        });
+
+        function renderFoodDiaryList() {
+            foodDiaryListEl.innerHTML = '';
+            foodDiary.forEach(entry => {
+                const listItem = document.createElement('li');
+                listItem.textContent = ${entry.date}: ${entry.foodName} - ${entry.servingSize} servings, ${entry.calories} calories;
+                foodDiaryListEl.appendChild(listItem);
+            });
+        }
+
+        document.getElementById('calculateTotalCaloriesBtn').addEventListener('click', () => {
+            const totalCalories = foodDiary.reduce((sum, entry) => sum + (entry.calories * entry.servingSize), 0);
+            totalCaloriesEl.textContent = Total Calories: ${totalCalories};
+        });
+    </script>
+    <footer>
+        <div class="container">
+            <p>© 2024 FitTrack, Inc.</p>
+        </div>
+    </footer>
+</body>
+</html>

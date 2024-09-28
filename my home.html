@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Summary</title>
+    <link rel="stylesheet" href="./assets/CSS/home.css">
+</head>
+<body>
+    <header1>
+        <div class="container">
+            <a href="my home.html" class="logo">FitTrack</a> 
+            <div class="auth-links">
+                <a href="index.html">Premium</a> | <a href="login.html">Log Out</a>
+            </div>
+        </div>
+    </header1>
+    <header>
+        <div class="container">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">MAKANAN</a></li>
+                    <li><a href="#">LATIHAN</a></li>
+                    <li><a href="#">APLIKASI</a></li>
+                    <li><a href="#">KOMUNITAS</a></li>
+                    <li><a href="#">BLOG</a></li>
+                    <li><a href="#">PREMIUM</a></li>
+                </ul>
+            </nav>
+            <div class="auth-links">
+                <a1 href="#">Stivo</a1>
+            </div>
+        </div>
+    </header>
+    <div class="summary-container">
+        <div class="summary-header">
+            <h2>Your Daily Summary</h2>
+            <div class="streak">3 DAY STREAK</div>
+        </div>
+        <div class="summary-content">
+            <div class="photo-upload">
+                <div class="photo-placeholder">No photo provided</div>
+            </div>
+            <div class="calories-info">
+                <div class="calories-remaining">
+                    <h3>Calories</h3>
+                    <input type="number" id="calories-remaining" value="0">
+                </div>
+                <div class="calories-details">
+                    <div>
+                        <label for="calories-goal">GOAL:</label>
+                        <input type="number" id="calories-goal" value="2360">
+                    </div>
+                    <div class="calories-food" id="calories-food">0 FOOD</div>
+                    <div class="calories-exercise" id="calories-exercise">0 EXERCISE</div>
+                    <div class="calories-net" id="calories-net">0 NET</div>
+                </div>
+            </div>
+        </div>
+        <div class="actions">
+            <button class="add-exercise-btn" onclick="showExerciseForm()">Add Exercise</button>
+            <button class="add-food-btn" onclick="showFoodForm()">Add Food</button>
+        </div>
+        <!-- <div class="weight-info">
+            <div class="weight-gained">0 kg GAINED</div>
+            <div class="weight-icon"> <img src="scale.png" alt="Weight Scale"> </div>
+        </div> -->
+    </div>
+
+    <div id="exercise-form" style="display:none;">
+        <h2>Add Exercise</h2>
+        <form id="addExerciseForm">
+            <label for="exerciseName">Exercise Name:</label>
+            <input type="text" id="exerciseName" name="exerciseName" required><br>
+            <label for="caloriesBurned">Calories Burned:</label>
+            <input type="number" id="caloriesBurned" name="caloriesBurned" required><br>
+            <button type="submit">Add Exercise</button>
+        </form>
+    </div>
+
+    <div id="food-form" style="display:none;">
+        <h2>Add Food</h2>
+        <form id="addFoodForm">
+            <label for="foodName">Food Name:</label>
+            <input type="text" id="foodName" name="foodName" required><br>
+            <label for="caloriesConsumed">Calories Consumed:</label>
+            <input type="number" id="caloriesConsumed" name="caloriesConsumed" required><br>
+            <button type="submit">Add Food</button>
+        </form>
+    </div>
+
+    <script src="./assets/js/home.js"></script>
+    <footer>
+        <div class="container">
+            <p>© 2024 FitTrack, Inc.</p>
+        </div>
+    </footer>
+</body>
+</html>
